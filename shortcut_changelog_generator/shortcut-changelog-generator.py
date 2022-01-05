@@ -5,8 +5,9 @@ import requests
 from git import Repo
 from datetime import datetime
 
-changelogPath = os.environ.get('CHANGELOG_PATH')
+changelogPath = os.environ.get('CHANGELOG_PATH', 'CHANGELOG.md')
 shortcutToken = os.environ.get('SHORTCUT_TOKEN')
+ignoreLastTag = os.environ.get('IGNORE_LAST_TAG', False)
 
 changelogHeaderLine = '# CHANGELOG\n'
 releaseHeaderLine = '## Releases\n'
@@ -20,9 +21,14 @@ def getStoriesIdsAndLatestTag():
         return None, None
 
     latestTag = tags[-1]
-    latestTagName = latestTag.name
-    previousTagName = tags[-2].name
-    rev = previousTagName + '..' + latestTagName
+    lastRevision = latestTag.name
+
+    previousRevision = tags[-2].name
+
+    if ignoreLastTag:
+        lastRevision = 'HEAD'
+
+    rev = previousRevision + '..' + lastRevision
 
     ids = set()
     for commit in repo.iter_commits(rev=rev):

@@ -7,6 +7,8 @@ variables:
     default: '${CHANGELOG_PATH}'
   - name: SHORTCUT_TOKEN
     default: '${SHORTCUT_TOKEN}'
+  - name: IGNORE_LAST_TAG
+    default: '${IGNORE_LAST_TAG}'
 repository: https://github.com/diogenesc/shortcut-changelog-generator/
 maintainer:
   name: Diógenes Castro
