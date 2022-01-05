@@ -1,0 +1,23 @@
+name: Shortcut Changelog Generator
+image: diogenesc/shortcut-changelog-generator
+category: Utilities
+description: Generate changelog using Shortcut integration
+variables:
+  - name: CHANGELOG_PATH
+    default: '${CHANGELOG_PATH}'
+  - name: SHORTCUT_TOKEN
+    default: '${SHORTCUT_TOKEN}'
+repository: https://github.com/diogenesc/shortcut-changelog-generator/
+maintainer:
+  name: Diógenes Castro
+  website: https://diogenesc.com
+  email: contato@diogenesc.com
+vendor:
+  name: Diógenes Castro
+  website: https://diogenesc.com
+  email: contato@diogenesc.com
+tags:
+  - shortcut
+  - changelog
+  - git
+  - docker
