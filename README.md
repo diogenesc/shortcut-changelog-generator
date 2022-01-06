@@ -14,7 +14,7 @@ A Python script to generate changelog based on shortcut stories referenced in co
 poetry run python src/main.py
 ```
 
-A changelog will be generated/updated at `$WORK_DIR` and 
+A changelog will be generated/updated at `$REPO_PATH` and 
 a diff will be sended to Telegram if configured.
 
 ### Docker
@@ -28,7 +28,7 @@ To run this project, you will need to add the following environment variables to
 | Variable           | Required | Description                       | Default      |
 |--------------------|----------|-----------------------------------|--------------|
 | DRY_RUN            | no       | Execute without save the file     | false        |
-| WORK_DIR           | yes      | Git repository path               |              |
+| REPO_PATH          | yes      | Git repository path               | .             |
 | SHORTCUT_TOKEN     | yes      | Shortcut API Token                |              |
 | TELEGRAM_CHAT_ID   | no       | Telegram chat ID                  |              |
 | TELEGRAM_BOT_TOKEN | no       | Telegram Bot Token                |              |
@@ -47,5 +47,5 @@ This program can be used as a Bitbucket Pipe.
     TELEGRAM_CHAT_ID: 0000000
     TELEGRAM_BOT_TOKEN: XXXXXXXXXXXXXXX
     TELEGRAM_SEND_DIFF: true
-    WORK_DIR: /opt/atlassian/pipelines/agent/build
+    REPO_PATH: /opt/atlassian/pipelines/agent/build
 ```
