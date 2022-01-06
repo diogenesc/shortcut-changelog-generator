@@ -3,7 +3,7 @@ import datetime
 import helpers.settings as settings
 from telegram.utils.helpers import escape_markdown
 
-os.chdir(settings.work_dir)
+os.chdir(settings.repo_path)
 
 changelog_header_line = '# CHANGELOG\n'
 release_header_line = '## Releases\n'
