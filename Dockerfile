@@ -14,4 +14,4 @@ RUN poetry install --no-dev
 
 COPY . .
 
-ENTRYPOINT [ "/usr/app/entrypoint.sh" ]
+CMD ["python", "/usr/app/src/main.py"]

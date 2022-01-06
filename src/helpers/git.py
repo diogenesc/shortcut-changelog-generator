@@ -3,7 +3,7 @@ import helpers.settings as settings
 from git import Repo
 
 def get_repo_from_workdir():
-    return Repo(settings.work_dir)
+    return Repo(settings.repo_path)
 
 def tags_sorted():
     repo = get_repo_from_workdir()
