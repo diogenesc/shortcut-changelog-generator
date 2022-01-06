@@ -16,4 +16,4 @@ RUN poetry install --no-dev
 
 COPY . .
 
-CMD ["poetry", "run", "python", "src/main.py"]
+CMD ["poetry", "run", "python", "/usr/app/src/main.py"]
