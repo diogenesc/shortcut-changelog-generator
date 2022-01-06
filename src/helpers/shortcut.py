@@ -9,7 +9,11 @@ def stories_list(ids):
 
     stories_list = []
     for story_id in ids:
-        story_dict = requests.get(api_url + story_id, headers=headers).json()
+        story = requests.get(api_url + story_id, headers=headers)
+        if story.status_code == 404:
+            continue
+
+        story_dict = story.json()
 
         story_name = story_dict['name']
         story_url = story_dict['app_url']
