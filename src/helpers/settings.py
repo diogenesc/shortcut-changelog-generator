@@ -5,7 +5,7 @@ from distutils.util import strtobool
 load_dotenv()
 
 dry_run = strtobool(os.environ.get('DRY_RUN', 'false'))
-work_dir = os.environ.get('WORK_DIR', '/usr/app')
+repo_path = os.environ.get('REPO_PATH', './')
 api_token = os.environ.get('SHORTCUT_TOKEN')
 telegram_chat_id = os.environ.get('TELEGRAM_CHAT_ID')
 telegram_bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
