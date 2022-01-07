@@ -1,0 +1,27 @@
+name: 'Shortcut Changelog Generator'
+description: 'A Python script to generate changelog based on shortcut stories referenced in commit messages'
+inputs:
+  DRY_RUN:
+    description: ''
+    default: false
+  REPO_PATH:
+    description: ''
+    required: true
+  CHANGELOG_PATH:
+    description: ''
+    default: 'CHANGELOG.md'
+  SHORTCUT_TOKEN:
+    description: ''
+    required: true
+  IGNORE_LAST_TAG:
+    description: ''
+    default: false
+  TELEGRAM_CHAT_ID:
+    description: ''
+  TELEGRAM_BOT_TOKEN:
+    description: ''
+  TELEGRAM_SEND_DIFF:
+    description: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

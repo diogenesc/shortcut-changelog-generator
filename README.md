@@ -18,7 +18,7 @@ a diff will be sended to Telegram if configured.
 
 ### Docker
 ```bash
-docker container run -v repo_path/:/app --env-file=.env diogenesc/shortcut-changelog-generator
+docker container run -v repo_path/:/app --workdir /app --env-file=.env diogenesc/shortcut-changelog-generator
 ```
 ## Environment Variables
 
@@ -48,4 +48,26 @@ This program can be used as a Bitbucket Pipe.
     TELEGRAM_BOT_TOKEN: XXXXXXXXXXXXXXX
     TELEGRAM_SEND_DIFF: true
     REPO_PATH: /opt/atlassian/pipelines/agent/build
+```
+
+## Github Actions
+
+This program can be used in Github Action.
+
+```yml
+steps:
+  - uses: actions/checkout@v2
+    with:
+      fetch-depth: 0
+  - name: Generate release.md
+    uses: diogenesc/shortcut-changelog-generator@v1
+    env:
+      DRY_RUN: ${{ secrets.DRY_RUN }}
+      REPO_PATH: ${{ secrets.REPO_PATH }}
+      CHANGELOG_PATH: ${{ secrets.CHANGELOG_PATH }}
+      SHORTCUT_TOKEN: ${{ secrets.SHORTCUT_TOKEN }}
+      IGNORE_LAST_TAG: ${{ secrets.IGNORE_LAST_TAG }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_SEND_DIFF: ${{ secrets.TELEGRAM_SEND_DIFF }}
 ```
