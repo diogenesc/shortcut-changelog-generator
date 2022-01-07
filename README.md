@@ -43,10 +43,11 @@ This program can be used as a Bitbucket Pipe.
 ```yml
 - pipe: docker://diogenesc/shortcut-changelog-generator
   variables:
-    SHORTCUT_TOKEN: XXXXXXXXXXXXXXX
-    TELEGRAM_CHAT_ID: 0000000
-    TELEGRAM_BOT_TOKEN: XXXXXXXXXXXXXXX
-    TELEGRAM_SEND_DIFF: true
+    SHORTCUT_TOKEN: "XXXXXXXXXXXXXXX"
+    TELEGRAM_CHAT_ID: "0000000"
+    TELEGRAM_BOT_TOKEN: "XXXXXXXXXXXXXXX"
+    TELEGRAM_SEND_DIFF: "true"
+    TELEGRAM_TITLE: "CHANGELOG TITLE"
     REPO_PATH: /opt/atlassian/pipelines/agent/build
 ```
 
@@ -70,4 +71,5 @@ steps:
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_SEND_DIFF: ${{ secrets.TELEGRAM_SEND_DIFF }}
+      TELEGRAM_TITLE: ${{ secrets.TELEGRAM_TITLE }}
 ```
