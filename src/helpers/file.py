@@ -31,9 +31,15 @@ def find_insert_index(file_lines):
     return insert_index + 1
 
 def build_diff_message(last_tag, stories_list):
-    tag_date = datetime.datetime.fromtimestamp(last_tag.tag.tagged_date).strftime('%d/%m/%Y')
+    release_title = last_tag.name
 
-    text = escape_markdown(last_tag.name + ' - ' + tag_date + '\n\n', 2)
+    if last_tag.commit is not None and last_tag.commit.committed_datetime is not None:
+        tag_date = last_tag.commit.committed_datetime.strftime('%d/%m/%Y')
+        release_title = release_title + ' - ' + tag_date
+
+    release_title = release_title + '\n\n'
+
+    text = escape_markdown(release_title, 2)
 
     for story_line in stories_list:
         escaped_id = story_line.id
@@ -44,9 +50,15 @@ def build_diff_message(last_tag, stories_list):
 
 
 def insert_stories_on_changelog(file_lines, insert_index, last_tag, stories_list):
-    tag_date = datetime.datetime.fromtimestamp(last_tag.tag.tagged_date).strftime('%d/%m/%Y')
+    release_title = '### ' + last_tag.name
 
-    file_lines.insert(insert_index, '### ' + last_tag.name + ' - ' + tag_date + '\n')
+    if last_tag.commit is not None and last_tag.commit.committed_datetime is not None:
+        tag_date = last_tag.commit.committed_datetime.strftime('%d/%m/%Y')
+        release_title = release_title + ' - ' + tag_date
+
+    release_title = release_title + '\n'
+
+    file_lines.insert(insert_index, release_title)
     insert_index = insert_index + 1
 
     stories_count = 0

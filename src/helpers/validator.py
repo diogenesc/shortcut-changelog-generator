@@ -1,7 +1,7 @@
 import re
 
-def check_if_tags_empty(ids):
-    return ids is None
+def check_if_tags_empty(tags):
+    return tags is None
 
 def check_if_ids_empty(ids):
     return ids is None
