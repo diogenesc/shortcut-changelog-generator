@@ -1,17 +1,29 @@
+FROM python:3.8-slim as exporter
+
+WORKDIR /app
+RUN pip install --no-cache-dir --upgrade poetry
+COPY pyproject.toml poetry.lock ./
+RUN poetry export -vv --no-ansi --without-hashes --no-interaction --format requirements.txt --output requirements.txt
+
+
+FROM python:3.8-slim as builder
+
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+COPY --from=exporter /app/requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+
 FROM python:3.8-slim
 
-ENV POETRY_VIRTUALENVS_CREATE=false
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl git && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get install -y curl binutils git \
-    && curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python - \
-    && ln -s $HOME/.poetry/bin/poetry /usr/bin/poetry
-
+ENV PATH="/opt/venv/bin:$PATH"
 WORKDIR /usr/app
-
-COPY pyproject.toml poetry.lock ./
-
-RUN poetry install --no-dev
-
-COPY . .
-
 CMD ["python", "/usr/app/src/main.py"]
+
+COPY --from=builder /opt/venv /opt/venv
+COPY . .
