@@ -7,6 +7,13 @@ A Python script to generate changelog based on shortcut stories referenced in co
 
 - Python 3.8+
 - Poetry
+
+## Installation
+
+```bash
+poetry install
+```
+
 ## Usage/Examples
 
 ```bash
