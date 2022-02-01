@@ -14,10 +14,10 @@ def stories_list(ids):
             continue
 
         story_dict = story.json()
-        
-        changelog_label = next((item for item in story_dict['labels'] if item['name'] == 'changelog-ignore'), False)
 
-        if changelog_label != False:
+        changelog_ignore_label = next((item for item in story_dict['labels'] if item['name'] == 'changelog-ignore'), False)
+
+        if changelog_ignore_label != False:
             continue
 
         story_name = story_dict['name']
