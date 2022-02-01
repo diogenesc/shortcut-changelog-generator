@@ -7,6 +7,13 @@ A Python script to generate changelog based on shortcut stories referenced in co
 
 - Python 3.8+
 - Poetry
+
+## Installation
+
+```bash
+poetry install
+```
+
 ## Usage/Examples
 
 ```bash
@@ -24,17 +31,18 @@ docker container run -v repo_path/:/app --workdir /app --env-file=.env diogenesc
 
 To run this project, you will need to add the following environment variables to your .env file
 
-| Variable           | Required | Description                       | Default      |
-|--------------------|----------|-----------------------------------|--------------|
-| DRY_RUN            | no       | Execute without save the file     | false        |
-| REPO_PATH          | yes      | Git repository path               | .            |
-| SHORTCUT_TOKEN     | yes      | Shortcut API Token                |              |
-| TELEGRAM_CHAT_ID   | no       | Telegram chat ID                  |              |
-| TELEGRAM_BOT_TOKEN | no       | Telegram Bot Token                |              |
-| TELEGRAM_SEND_DIFF | no       | Active telegram notifier          | false        |
-| TELEGRAM_TITLE     | no       | Insert a title in the notify      |              |
-| IGNORE_LAST_TAG    | no       | Use all commits until last commit | false        |
-| CHANGELOG_PATH     | no       | Changelog path                    | CHANGELOG.md |
+| Variable              | Required | Description                                 | Default      |
+|-----------------------|----------|---------------------------------------------|--------------|
+| DRY_RUN               | no       | Execute without save the file               | false        |
+| REPO_PATH             | yes      | Git repository path                         | .            |
+| SHORTCUT_TOKEN        | yes      | Shortcut API Token                          |              |
+| SHORTCUT_IGNORE_LABEL | no       | Shortcut story label to ignore in changelog |              |
+| TELEGRAM_CHAT_ID      | no       | Telegram chat ID                            |              |
+| TELEGRAM_BOT_TOKEN    | no       | Telegram Bot Token                          |              |
+| TELEGRAM_SEND_DIFF    | no       | Active telegram notifier                    | false        |
+| TELEGRAM_TITLE        | no       | Insert a title in the notify                |              |
+| IGNORE_LAST_TAG       | no       | Use all commits until last commit           | false        |
+| CHANGELOG_PATH        | no       | Changelog path                              | CHANGELOG.md |
 
 ## Bitbucket Pipelines
 

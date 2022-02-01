@@ -15,6 +15,12 @@ def stories_list(ids):
 
         story_dict = story.json()
 
+        if settings.shortcut_ignore_label != None:
+            changelog_ignore_label = next((item for item in story_dict['labels'] if item['name'] == settings.shortcut_ignore_label), False)
+
+            if changelog_ignore_label != False:
+                continue
+
         story_name = story_dict['name']
         story_url = story_dict['app_url']
 
