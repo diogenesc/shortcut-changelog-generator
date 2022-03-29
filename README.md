@@ -20,6 +20,8 @@ poetry install
 poetry run python src/main.py
 ```
 
+This app will search for commits with the pattern `\[sc-(.+)\]`, where `(.+)` is the story ID from Shortcut. Example: \[sc-12345\]
+
 A changelog will be generated/updated at `$REPO_PATH` and 
 a diff will be sended to Telegram if configured.
 
