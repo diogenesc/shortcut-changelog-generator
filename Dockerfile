@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl git && \
     rm -rf /var/lib/apt/lists/*
 
-RUN git config --global --add safe.directory .
+RUN git config --global --add safe.directory /github/workspace
 
 ENV PATH="/opt/venv/bin:$PATH"
 WORKDIR /usr/app
