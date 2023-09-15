@@ -7,9 +7,7 @@ def get_repo_from_workdir():
 
 def tags_sorted():
     repo = get_repo_from_workdir()
-    print("DEBUG AQUI: ")
-    print(repo)
-    print(repo.tags)
+
     return repo.tags
 
 def filter_stories_id_between_tags():
