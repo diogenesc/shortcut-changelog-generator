@@ -10,7 +10,7 @@ def tags_sorted():
     print("DEBUG AQUI: ")
     print(repo)
     print(repo.tags)
-    return sorted(repo.tags, key=lambda t: t.commit.committed_datetime)
+    return repo.tags
 
 def filter_stories_id_between_tags():
     repo = get_repo_from_workdir()
